@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fire Suppression Robot — Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🔥</div>
+        <div>
+          <h1>Fire Suppression Robot</h1>
+          <p class="subtitle">Real-time Monitoring & Control Dashboard</p>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge">Hosted on Vercel</span>
+        <span class="badge">Powered by Firebase</span>
+        <span class="badge">Mobile Friendly</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- Status Card -->
+      <section class="card status-card">
+        <h2>🤖 Robot Status</h2>
+        <div class="status-row"><span>Overall Status:</span><span id="overallStatus" class="pill offline">OFFLINE</span></div>
+        <div class="status-row"><span>Operation Mode:</span><span id="opMode">-</span></div>
+        <div class="status-row"><span>Fire Detected:</span><span id="fireDetected">-</span></div>
+        <div class="status-row"><span>Pump Active:</span><span id="pumpActive">-</span></div>
+        <div class="status-row"><span>Battery Level:</span><span id="batteryLevel">-</span></div>
+        <div class="status-row"><span>Last Update:</span><span id="lastUpdate">-</span></div>
+
+        <div class="status-foot">
+          <div id="cloudStatus" class="cloud">🔴 Connecting to cloud...</div>
+        </div>
+      </section>
+
+      <!-- Controls Card -->
+      <section class="card controls-card">
+        <h2>🎮 Robot Controls</h2>
+        <div class="row">
+          <button class="btn btn-green" id="autoBtn">🤖 Auto Mode</button>
+          <button class="btn btn-blue" id="manualBtn">🧑‍✈️ Manual Mode</button>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-amber" id="pumpOn">💧 Pump ON</button>
+          <button class="btn btn-gray" id="pumpOff">⛔ Pump OFF</button>
+        </div>
+
+        <div class="controls-grid">
+          <button class="btn btn-primary big" id="forward">⬆ Forward</button>
+          <button class="btn btn-primary" id="left">⬅ Left</button>
+          <button class="btn btn-primary" id="right">➡ Right</button>
+          <button class="btn btn-primary big" id="back">⬇ Backward</button>
+          <button class="btn btn-red big" id="stop">⛔ Stop</button>
+        </div>
+      </section>
+
+      <!-- Notifications Card -->
+      <section class="card notify-card">
+        <h2>🔔 Live Notifications</h2>
+        <div id="notifList" class="notif-list">
+          <div class="notif empty">Fire Robot Dashboard Started</div>
+        </div>
+        <div class="notify-actions">
+          <button class="btn btn-muted" id="clearNotifs">🧹 Clear Notifications</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Radar / Scan Map -->
+    <section class="radar-wrap card">
+      <div class="radar-header">
+        <h3>Ultrasonic 180° Scan Map</h3>
+        <div class="radar-legend"><span class="legend-dot"></span> Distance points (cm)</div>
+      </div>
+      <canvas id="radarCanvas" width="900" height="300"></canvas>
+    </section>
+
+    <footer class="footer">
+      <div>Fire Suppression Robot System • Powered by ESP8266 + Firebase • Deploy on Vercel</div>
+      <div class="credit">Support: <a href="mailto:you@example.com">you@example.com</a></div>
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
